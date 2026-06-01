@@ -1,0 +1,36 @@
+---
+import { PILLARS, FOCUS_LEDE } from '../data/content';
+
+// 2-up grid: odd cells get a right divider + right padding, even cells get
+// left padding; the last row drops its bottom border.
+const cellClass = (i: number) =>
+  i % 2 === 0 ? 'md:border-r md:border-line md:pr-12' : 'md:pl-12';
+---
+<section class="mx-auto max-w-[1320px] border-t border-line px-5 py-14 sm:px-8 lg:px-14 lg:py-18">
+  <div class="mb-10 flex items-end justify-between gap-6">
+    <div>
+      <span class="mb-3 block font-mono text-[11px] tracking-[0.1em] text-accent-fg uppercase">§ C · Focus areas</span>
+      <h2 class="m-0 max-w-[24ch] text-[40px] leading-[1.05] font-medium tracking-[-0.025em] text-balance">What we are focused on.</h2>
+    </div>
+  </div>
+  <p class="-mt-4 mb-10 max-w-[70ch] text-base leading-[1.55] text-dim">{FOCUS_LEDE}</p>
+
+  <div class="grid grid-cols-1 border-t border-line md:grid-cols-2">
+    {
+      PILLARS.map((p, i) => (
+        <article
+          class:list={[
+            'border-b border-line py-9 last:border-b-0 md:[&:nth-last-child(-n+2)]:border-b-0',
+            cellClass(i),
+          ]}
+        >
+          <div class="mb-[18px] flex items-center gap-2.5">
+            <span class="mono text-accent-fg">{p.no}</span>
+          </div>
+          <h3 class="m-0 mb-3.5 max-w-[22ch] text-[24px] leading-[1.15] font-medium tracking-[-0.02em] text-balance">{p.title}</h3>
+          <p class="m-0 max-w-[50ch] text-[15px] leading-[1.6] text-dim">{p.body}</p>
+        </article>
+      ))
+    }
+  </div>
+</section>

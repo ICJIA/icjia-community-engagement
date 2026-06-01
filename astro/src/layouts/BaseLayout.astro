@@ -1,0 +1,62 @@
+---
+import '../styles/global.css';
+import { SEO } from 'astro-seo';
+import { SITE } from '../data/content';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = `${SITE.org} · ${SITE.product}`, description = SITE.blurb } = Astro.props;
+
+const SITE_ORIGIN = 'https://icjia-community-engagement.netlify.app';
+// Canonical that matches the URL Netlify actually serves (trailing-slash
+// form; strip any index.html). Keeps SEO identical whether a visitor lands
+// on /path or /path/ — see netlify.toml for the 200-rewrite half of this.
+const rawPath = Astro.url.pathname.replace(/index\.html$/, '');
+const canonical = new URL(rawPath, Astro.site ?? SITE_ORIGIN).toString();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- No-flash theme: apply the saved preference before first paint. This
+         inline script is hashed in the CSP (see scripts/csp-hashes.mjs). -->
+    <script is:inline>
+      try {
+        if (localStorage.getItem('icjia-theme') === 'light') {
+          document.documentElement.classList.add('is-light');
+        }
+      } catch (e) {}
+    </script>
+
+    <SEO
+      title={title}
+      description={description}
+      canonical={canonical}
+      extend={{
+        meta: [
+          { name: 'theme-color', content: '#0a0f1e' },
+          { name: 'generator', content: 'Astro' },
+        ],
+      }}
+    />
+  </head>
+  <body>
+    <a
+      href="#main"
+      class="sr-only rounded-[2px] focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:bg-accent focus:px-4 focus:py-2 focus:text-accent-on focus:outline-2 focus:outline-offset-2 focus:outline-accent"
+      >Skip to main content</a
+    >
+    <slot />
+
+    <script>
+      import '../scripts/alpine.ts';
+    </script>
+  </body>
+</html>

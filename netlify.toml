@@ -1,0 +1,83 @@
+# Netlify configuration — ICJIA Community Engagement Hub
+# The Astro app lives in astro/; Netlify builds there and publishes astro/dist.
+
+[build]
+  base = "astro"
+  command = "pnpm build"
+  publish = "dist"            # relative to `base` → astro/dist
+
+[build.environment]
+  NODE_VERSION = "22.22.2"
+  PNPM_VERSION = "10.33.4"    # belt-and-suspenders alongside the packageManager pin
+
+# --- Trailing-slash reconciliation -----------------------------------------
+# Astro builds with trailingSlash:'always' (dist/<route>/index.html). A
+# status=200 + force=true rule is a *rewrite*, not a redirect: it serves the
+# slash version for a no-slash request WITHOUT emitting a 301. Result: both
+# /foo and /foo/ return 200 (no 404 either way) and the canonical URL stays
+# consistent. Add one rule per future top-level/dynamic route; this catch-all
+# covers first-level pages.
+[[redirects]]
+  from = "/:slug"
+  to = "/:slug/"
+  status = 200
+  force = true
+
+# --- Production / default headers ------------------------------------------
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "0"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=(), interest-cohort=()"
+    Strict-Transport-Security = "max-age=31536000"
+    Cross-Origin-Opener-Policy = "same-origin"
+    Cross-Origin-Resource-Policy = "same-origin"
+    # The Alpine CSP build evaluates directives without eval/new Function, so
+    # NO 'unsafe-eval' is needed. The only inline script is the no-flash theme
+    # setter, allow-listed by sha256. Regenerate after editing it:
+    #   pnpm --dir astro build && pnpm --dir astro csp-hashes
+    # then paste the printed hash into BOTH CSP blocks below.
+    Content-Security-Policy = """\
+      default-src 'self'; \
+      script-src 'self' 'sha256-ywnfcPh8MfqpXy9lw37f8o2Gz2CEP027l/k7AZLmWt0='; \
+      style-src 'self' 'unsafe-inline'; \
+      img-src 'self' data:; \
+      font-src 'self'; \
+      connect-src 'self'; \
+      frame-src 'self'; \
+      frame-ancestors 'self'; \
+      base-uri 'self'; \
+      form-action 'self'; \
+      object-src 'none'\
+    """
+
+# --- Long-cache fingerprinted assets ---------------------------------------
+# Everything under /_astro/ is content-hashed by Astro, so it can be cached
+# forever (addresses Lighthouse's cache-lifetime finding).
+[[headers]]
+  for = "/_astro/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# --- Deploy-preview override -----------------------------------------------
+# Netlify's branch-deploy admin overlay iframes back to itself; allow that
+# only on *.netlify.app previews. Production keeps the strict CSP above.
+[[context.deploy-preview.headers]]
+  for = "/*"
+  [context.deploy-preview.headers.values]
+    Content-Security-Policy = """\
+      default-src 'self'; \
+      script-src 'self' 'sha256-ywnfcPh8MfqpXy9lw37f8o2Gz2CEP027l/k7AZLmWt0='; \
+      style-src 'self' 'unsafe-inline'; \
+      img-src 'self' data:; \
+      font-src 'self'; \
+      connect-src 'self'; \
+      frame-src 'self' https://app.netlify.com; \
+      frame-ancestors 'self' https://app.netlify.com; \
+      base-uri 'self'; \
+      form-action 'self'; \
+      object-src 'none'\
+    """

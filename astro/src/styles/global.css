@@ -1,0 +1,93 @@
+@import 'tailwindcss';
+
+/* Self-hosted fonts (variable) — browsers pull only the unicode-range
+   subsets the page actually uses. Same families as the design demo. */
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/jetbrains-mono';
+
+/* `light:` variant — true when the html.is-light theme is active. Keeps
+   theme-conditional styling in the markup as utilities (e.g. `light:hidden`)
+   instead of bespoke CSS. */
+@custom-variant light (&:where(html.is-light, html.is-light *));
+
+/* `mono` — the recurring monospace label treatment (JetBrains Mono, 11px,
+   tracked-out, uppercase). Defined via Tailwind's @utility API; color stays a
+   text-* utility at each call site, mirroring the demo's `.in-mono`. */
+@utility mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------------------
+   Theme tokens — semantic color variables consumed by Tailwind utilities
+   (bg-bg, text-fg, border-line, text-accent-fg, bg-surface, …). Defaults are
+   the demo's DARK palette; the .is-light override re-assigns the same tokens
+   so every utility flips with the theme automatically.
+--------------------------------------------------------------------------- */
+@theme {
+  --font-sans: 'Inter Variable', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, monospace;
+
+  --color-bg: #0a0f1e;
+  --color-fg: #e8ecf7;
+  --color-dim: #8a93ae;
+  --color-mute: #535b73;
+  --color-line: #1b2236;
+  --color-surface: #0f1527;
+  --color-surface-2: #141b2e;
+  --color-accent: #6366f1;
+  --color-accent-fg: #a5b0ff;
+  --color-accent-hover: #7c7fff;
+  /* Pure black (not the demo's #0a0f1e) on the indigo accent → 4.70:1, clears
+     WCAG AA 4.5:1 for the button text. Visually identical; the demo's value
+     was 4.27:1 and failed. */
+  --color-accent-on: #000000;
+}
+
+/* LIGHT THEME — unlayered + element-qualified so it always beats Tailwind's
+   :root @theme defaults regardless of source order / layering. */
+html.is-light {
+  --color-bg: #fbfbfd;
+  --color-fg: #0e1322;
+  --color-dim: #5b6379;
+  --color-mute: #9aa0b4;
+  --color-line: #e4e6ee;
+  --color-surface: #f2f3f8;
+  --color-surface-2: #eaecf3;
+  --color-accent: #4f46e5;
+  --color-accent-fg: #4338ca;
+  --color-accent-hover: #4338ca;
+  --color-accent-on: #ffffff;
+  color-scheme: light;
+}
+
+html {
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+  font-family: var(--font-sans);
+  /* Matches the demo's root typography. */
+  font-feature-settings: 'ss01', 'cv11';
+  letter-spacing: -0.005em;
+  color-scheme: dark;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Smooth dark/light transition, like the demo (0.2s). */
+html,
+body {
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Respect reduced-motion preferences. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

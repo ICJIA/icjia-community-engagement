@@ -1,0 +1,43 @@
+---
+import { EVENTS } from '../data/content';
+const chipGhost =
+  'inline-block rounded-[2px] border border-line px-2 py-1 font-mono text-[10px] uppercase tracking-[0.06em] text-dim';
+---
+<section
+  id="events"
+  class="relative isolate mx-auto max-w-[1320px] scroll-mt-24 border-t border-transparent px-5 py-14 before:absolute before:inset-y-0 before:left-1/2 before:-z-10 before:w-screen before:-translate-x-1/2 before:bg-surface before:content-[''] sm:px-8 lg:px-14 lg:py-18"
+>
+  <div class="mb-10 flex items-end justify-between gap-6">
+    <div>
+      <span class="mb-3 block font-mono text-[11px] tracking-[0.1em] text-accent-fg uppercase">§ D · Engagement calendar</span>
+      <h2 class="m-0 max-w-[24ch] text-[40px] leading-[1.05] font-medium tracking-[-0.025em] text-balance">Upcoming opportunities.</h2>
+    </div>
+  </div>
+
+  <ul class="m-0 list-none p-0">
+    {
+      EVENTS.map((e, i) => (
+        <li class="group -mx-4 flex cursor-pointer flex-col gap-3 border-t border-line px-4 py-6 transition-colors hover:bg-surface md:grid md:grid-cols-[40px_200px_1fr_220px_32px] md:items-start md:gap-6">
+          <div>
+            <span class="font-mono text-[14px] text-dim">{String(i + 1).padStart(2, '0')}</span>
+          </div>
+          <div class="flex flex-col gap-1">
+            <span class="mono text-accent-fg">{e.when}</span>
+            <span class="text-[13px] text-dim">{e.series}</span>
+          </div>
+          <div>
+            <h3 class="m-0 mb-1.5 text-[20px] leading-[1.2] font-medium tracking-[-0.015em]">{e.title}</h3>
+            <p class="m-0 text-[14px] leading-[1.55] text-dim">{e.desc}</p>
+          </div>
+          <div class="flex flex-col items-start gap-1.5">
+            <span class="mono text-dim">{e.where}</span>
+            <span class={chipGhost}>{e.seats}</span>
+          </div>
+          <div class="text-[22px] text-dim transition-[transform,color] duration-200 group-hover:translate-x-1 group-hover:text-accent-fg md:text-right">
+            →
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>

@@ -1,0 +1,35 @@
+---
+import CivicMark from './CivicMark.astro';
+import { FOOTER_LINKS } from '../data/content';
+---
+<footer class="mt-10 border-t border-line">
+  <div class="mx-auto grid max-w-[1320px] grid-cols-1 gap-10 px-5 py-16 sm:px-8 md:grid-cols-[280px_1fr] lg:gap-16 lg:px-14">
+    <div class="inline-flex items-center gap-3">
+      <CivicMark size={26} />
+      <span class="block">
+        <span class="block text-sm font-semibold tracking-[0.02em]">ICJIA</span>
+        <span class="mt-px block text-xs text-dim">Community Engagement Hub</span>
+      </span>
+    </div>
+
+    <div class="grid grid-cols-2 gap-8 md:grid-cols-4">
+      {
+        FOOTER_LINKS.map((f) => (
+          <div>
+            <div class="mb-2.5 text-[13px] font-medium text-fg">{f.h}</div>
+            {f.mono ? (
+              <div class="mono text-[11px] break-all text-dim">{f.body}</div>
+            ) : (
+              <div class="text-[13px] leading-[1.45] text-dim">{f.body}</div>
+            )}
+          </div>
+        ))
+      }
+    </div>
+  </div>
+
+  <div class="mx-auto flex max-w-[1320px] flex-col gap-3 border-t border-line px-5 py-6 sm:px-8 md:flex-row md:items-center md:justify-between md:gap-0 lg:px-14">
+    <span class="mono text-dim">© 2026 Illinois Criminal Justice Information Authority</span>
+    <span class="mono text-dim">illinois.gov · accessibility · privacy · FOIA</span>
+  </div>
+</footer>

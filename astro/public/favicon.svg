@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40" role="img" aria-label="ICJIA">
+  <rect width="40" height="40" rx="7" fill="#0A0F1E" />
+  <g fill="none" stroke="#A5B0FF" stroke-width="1.6" stroke-linejoin="miter">
+    <polygon points="20,4 34,12 34,28 20,36 6,28 6,12" />
+    <polygon points="20,10 29,15 20,20 11,15" />
+    <polygon points="20,19 29,24 20,29 11,24" />
+    <line x1="20" y1="4" x2="20" y2="36" />
+  </g>
+</svg>

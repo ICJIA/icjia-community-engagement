@@ -1,0 +1,38 @@
+---
+import CivicMark from './CivicMark.astro';
+import ThemeToggle from './ThemeToggle.astro';
+import { NAV } from '../data/content';
+---
+<header class="sticky top-0 z-10 border-b border-line bg-bg/90 backdrop-blur-[8px]">
+  <div class="mx-auto grid max-w-[1320px] grid-cols-[1fr_auto] items-center gap-6 px-5 py-[18px] sm:px-8 lg:grid-cols-[1fr_auto_auto] lg:gap-12 lg:px-14">
+    <a href="#" class="inline-flex items-center gap-3 text-inherit no-underline">
+      <CivicMark size={26} />
+      <span class="block">
+        <span class="block text-sm font-semibold tracking-[0.02em]">ICJIA</span>
+        <span class="mt-px block text-xs text-dim">Community Engagement Hub</span>
+      </span>
+    </a>
+
+    <nav class="hidden gap-7 lg:flex" aria-label="Primary">
+      {
+        NAV.map((n) => (
+          <a
+            href={n.href}
+            class="relative py-1.5 text-sm text-fg no-underline transition-colors after:absolute after:right-full after:-bottom-0.5 after:left-0 after:h-px after:bg-accent after:transition-[right] after:duration-[250ms] after:content-[''] hover:text-accent-fg hover:after:right-0"
+          >
+            {n.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="inline-flex items-center justify-self-end gap-3">
+      <ThemeToggle />
+      <a
+        href="#subscribe"
+        class="rounded-[2px] bg-accent px-4 py-[9px] text-[13px] font-medium text-accent-on no-underline transition-colors hover:bg-accent-hover"
+        >Subscribe</a
+      >
+    </div>
+  </div>
+</header>

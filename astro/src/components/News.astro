@@ -1,0 +1,100 @@
+---
+import { UPDATE_TABS, UPDATES, countForTab } from '../data/content';
+
+// Shared class fragments (kept identical to the demo's .in-chip / kicker).
+const chip =
+  'inline-block rounded-[2px] border border-line px-2 py-1 font-mono text-[10px] uppercase tracking-[0.06em] text-fg';
+const kicker = 'font-mono text-[11px] uppercase tracking-[0.08em] text-accent-fg';
+const arrowLink =
+  'inline-flex items-center gap-2.5 border-b border-line pb-1 text-[15px] text-fg transition-colors group-hover:border-accent group-hover:text-accent-fg';
+---
+<section class="relative isolate mx-auto max-w-[1320px] border-t border-transparent px-5 py-14 before:absolute before:inset-y-0 before:left-1/2 before:-z-10 before:w-screen before:-translate-x-1/2 before:bg-surface before:content-[''] sm:px-8 lg:px-14 lg:py-18">
+  <div class="mb-10 flex items-end justify-between gap-6">
+    <div>
+      <span class="mb-3 block font-mono text-[11px] tracking-[0.1em] text-accent-fg uppercase">§ B · Latest updates</span>
+      <h2 class="m-0 max-w-[24ch] text-[40px] leading-[1.05] font-medium tracking-[-0.025em] text-balance">News &amp; announcements.</h2>
+    </div>
+  </div>
+
+  <div x-data="news">
+    <!-- Tabs: labels + counts are static (server-rendered); Alpine only
+         toggles the active highlight and re-renders the bento below. -->
+    <div class="mb-8 flex flex-wrap gap-1 border-b border-line">
+      {
+        UPDATE_TABS.map((t) => (
+          <button
+            type="button"
+            x-on:click={`select${t}`}
+            x-bind:class={`class${t}`}
+            class="group -mb-px inline-flex cursor-pointer items-center gap-2 border-0 border-b-2 border-transparent bg-transparent px-3.5 py-2.5 text-sm text-dim transition-colors hover:text-fg focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent [&.is-on]:border-accent [&.is-on]:text-fg"
+          >
+            {t}
+            <span class="inline-block rounded-[2px] bg-surface px-1.5 py-0.5 font-mono text-[10px] text-dim group-[.is-on]:bg-accent/20 group-[.is-on]:text-accent-fg">
+              {countForTab(t)}
+            </span>
+          </button>
+        ))
+      }
+    </div>
+
+    {/* Non-executable data island for the Alpine filter. */}
+    <script type="application/json" id="news-data" is:inline set:html={JSON.stringify(UPDATES)} />
+
+    <div class="flex flex-col border-t border-line">
+      {/* Feature = first match in the active tab. */}
+      <template x-if="feature">
+        <a
+          href="#"
+          class="group -mx-4 grid grid-cols-1 items-start gap-8 border-b border-line px-4 py-10 text-inherit no-underline transition-colors hover:bg-surface md:grid-cols-[1fr_auto] md:gap-14"
+        >
+          <div class="flex max-w-[56ch] flex-col gap-2">
+            <div class={kicker} x-text="feature.kicker"></div>
+            <h3 class="my-1 text-[32px] leading-[1.1] font-medium tracking-[-0.025em] text-balance" x-text="feature.title"></h3>
+            <p class="m-0 text-base leading-[1.55] text-dim" x-text="feature.body"></p>
+            <div class="mt-4 flex items-center gap-6">
+              <span class="mono text-dim" x-text="feature.status"></span>
+              <span class={arrowLink}>
+                <span x-text="feature.cta"></span>
+                <span class="inline-block transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </span>
+            </div>
+          </div>
+          <div class="flex flex-col items-start gap-[18px] md:min-w-[240px] md:items-end md:text-right">
+            <div class="flex flex-col items-start gap-1.5 md:items-end">
+              <span class="mono text-dim">Date</span>
+              <span class="text-[20px] font-medium tracking-[-0.01em]" x-text="feature.date"></span>
+            </div>
+            <span class={chip} x-text="feature.tag"></span>
+          </div>
+        </a>
+      </template>
+
+      {/* Remaining matches = card grid. CSS nth-child works on x-for output. */}
+      <div class="grid grid-cols-1 md:grid-cols-2">
+        <template x-for="u in rest" :key="u.id">
+          <a
+            href="#"
+            class="group flex flex-col gap-4 border-b border-line px-4 py-8 text-inherit no-underline transition-colors last:border-b-0 hover:bg-surface md:odd:pr-8 md:even:border-l md:even:border-line md:even:pl-8 md:[&:nth-last-child(-n+2)]:border-b-0"
+          >
+            <div class="flex items-center gap-3">
+              <span class="mono text-dim" x-text="u.date"></span>
+              <span class={chip} x-text="u.tag"></span>
+            </div>
+            <div class="flex flex-1 flex-col gap-1.5">
+              <div class={kicker} x-text="u.kicker"></div>
+              <h4 class="m-0 max-w-[24ch] text-[20px] leading-[1.2] font-medium tracking-[-0.015em] text-balance" x-text="u.title"></h4>
+              <p class="m-0 max-w-[50ch] text-[14px] leading-[1.55] text-dim" x-text="u.body"></p>
+            </div>
+            <div class="mt-auto flex items-center justify-between">
+              <span class="mono text-dim" x-text="u.status"></span>
+              <span class={arrowLink}>
+                <span x-text="u.cta"></span>
+                <span class="inline-block transition-transform duration-200 group-hover:translate-x-0.5">→</span>
+              </span>
+            </div>
+          </a>
+        </template>
+      </div>
+    </div>
+  </div>
+</section>
