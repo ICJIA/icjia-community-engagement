@@ -1,7 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
-<rect width="512" height="512" rx="96" fill="#0A0F1E"/>
-<svg x="66.0" y="166.1" width="380.0" height="179.8" viewBox="0 0 154.06 72.89" preserveAspectRatio="xMidYMid meet">
-
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="154.06pt" height="72.89pt" viewBox="0 0 154.06 72.89">
 <defs>
 <clipPath id="clip-0">
 <path clip-rule="nonzero" d="M 95 1 L 153.125 1 L 153.125 71 L 95 71 Z M 95 1 "/>
@@ -43,6 +41,4 @@
 <g clip-path="url(#clip-4)">
 <path fill="none" stroke-width="10" stroke-linecap="butt" stroke-linejoin="miter" stroke="rgb(100%, 100%, 100%)" stroke-opacity="1" stroke-miterlimit="4" d="M 4.991207 723.931857 L 4.991207 698.189806 L 1266.58749 698.189806 L 1266.58749 723.931857 Z M 4.991207 723.931857 " transform="matrix(0.0993935, 0, 0, -0.0993935, 0.000000000000000444, 72.614312)"/>
 </g>
-
-</svg>
 </svg>

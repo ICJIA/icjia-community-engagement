@@ -1,6 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="512" height="512" viewBox="0 0 512 512">
-<rect width="512" height="512" rx="96" fill="#0A0F1E"/>
-<svg x="66.0" y="166.1" width="380.0" height="179.8" viewBox="0 0 154.06 72.89" preserveAspectRatio="xMidYMid meet">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1200" height="630" viewBox="0 0 1200 630">
+<rect width="1200" height="630" fill="#0A0F1E"/>
+<svg x="80" y="70" width="120.0" height="56.8" viewBox="0 0 154.06 72.89" preserveAspectRatio="xMidYMid meet">
 
 <defs>
 <clipPath id="clip-0">
@@ -45,4 +45,11 @@
 </g>
 
 </svg>
+<text x="80" y="158" font-family="'JetBrains Mono',ui-monospace,'SFMono-Regular',monospace" font-size="14" fill="#8A93AE" letter-spacing="2">ILLINOIS CRIMINAL JUSTICE INFORMATION AUTHORITY</text>
+<text x="78" y="312" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="84" font-weight="600" fill="#E8ECF7" letter-spacing="-3">Community</text>
+<text x="78" y="402" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="84" font-weight="600" fill="#E8ECF7" letter-spacing="-3">Engagement Hub</text>
+<text x="80" y="470" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="27" fill="#8A93AE">Connecting communities, partners, and public safety</text>
+<text x="80" y="506" font-family="'Inter','Helvetica Neue',Arial,sans-serif" font-size="27" fill="#8A93AE">resources across <tspan fill="#A5B0FF">Illinois.</tspan></text>
+<rect x="80" y="544" width="72" height="4" fill="#6366F1"/>
+<text x="80" y="584" font-family="'JetBrains Mono',ui-monospace,'SFMono-Regular',monospace" font-size="15" fill="#8A93AE" letter-spacing="2">NEWS · EVENTS · GET INVOLVED · RESOURCES</text>
 </svg>

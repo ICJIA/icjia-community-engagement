@@ -1,0 +1,11 @@
+---
+// Official ICJIA wordmark, theme-aware: white on the dark theme, brand-black
+// on the light theme (swapped via the `light:` variant — pure CSS, no flash).
+// Converted from the supplied ICJIAwhite / ICJIAblack EPS files.
+interface Props {
+  class?: string;
+}
+const { class: className = 'h-7 w-auto' } = Astro.props;
+---
+<img src="/icjia-logo-white.svg" alt="ICJIA" width="154" height="73" class:list={['light:hidden', className]} />
+<img src="/icjia-logo-black.svg" alt="ICJIA" width="154" height="73" class:list={['hidden light:block', className]} />

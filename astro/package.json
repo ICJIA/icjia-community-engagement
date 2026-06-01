@@ -1,6 +1,6 @@
 {
   "name": "icjia-community-engagement",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "description": "ICJIA Community Engagement Hub — landing page (Astro + Tailwind + Alpine).",
@@ -19,17 +19,18 @@
   },
   "dependencies": {
     "@alpinejs/csp": "^3.15.12",
-    "@astrojs/sitemap": "^3.7.3",
     "@fontsource-variable/inter": "^5.2.8",
     "@fontsource-variable/jetbrains-mono": "^5.2.8",
     "@tailwindcss/vite": "^4.3.0",
     "astro": "^6.4.2",
     "astro-seo": "^1.1.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.3.0"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
-      "esbuild"
+      "esbuild",
+      "sharp"
     ]
   }
 }

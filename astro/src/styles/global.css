@@ -30,7 +30,9 @@
   --font-sans: 'Inter Variable', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: 'JetBrains Mono Variable', ui-monospace, SFMono-Regular, monospace;
 
-  --color-bg: #0a0f1e;
+  /* Deepened base (was #0a0f1e) so the tinted surface sections read as
+     distinct bands rather than a subtle shift. */
+  --color-bg: #06090f;
   --color-fg: #e8ecf7;
   --color-dim: #8a93ae;
   --color-mute: #535b73;

@@ -1,11 +1,29 @@
-# ICJIA Community Engagement Hub
+<p align="center">
+  <img src="astro/public/og-image.png" alt="ICJIA Community Engagement Hub" width="820" />
+</p>
+
+<h1 align="center">ICJIA Community Engagement Hub</h1>
+
+<!-- After the first Netlify deploy, replace SITE_ID below with your site's API ID
+     (Netlify → Site configuration → Site details → Site ID). -->
+<p align="center">
+  <a href="https://app.netlify.com/projects/icjia-community-engagement/deploys"><img src="https://api.netlify.com/api/v1/badges/SITE_ID/deploy-status" alt="Netlify Status" /></a>
+  <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6366F1.svg" alt="License: MIT" /></a>
+  <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-6.4-BC52EE?logo=astro&logoColor=white" alt="Astro" /></a>
+  <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-4.3-38BDF8?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
+  <a href="https://alpinejs.dev"><img src="https://img.shields.io/badge/Alpine.js-3-77C1D2?logo=alpinedotjs&logoColor=white" alt="Alpine.js" /></a>
+  <a href=".nvmrc"><img src="https://img.shields.io/badge/Node-22-339933?logo=nodedotjs&logoColor=white" alt="Node 22" /></a>
+  <a href="https://pnpm.io"><img src="https://img.shields.io/badge/pnpm-10-F69220?logo=pnpm&logoColor=white" alt="pnpm" /></a>
+  <a href="#accessibility--audits"><img src="https://img.shields.io/badge/Lighthouse_mobile-98%20·%20100%20·%20100%20·%20100-0CCE6B?logo=lighthouse&logoColor=white" alt="Lighthouse mobile scores" /></a>
+  <a href="#accessibility--audits"><img src="https://img.shields.io/badge/WCAG_2.1_AA-0_violations-2ECC40.svg" alt="WCAG 2.1 AA — 0 violations" /></a>
+</p>
 
 Landing page for the **Illinois Criminal Justice Information Authority (ICJIA)
 Community Engagement Hub** — a central space for news, engagement
 opportunities, public safety updates, grantee conversations, and
 community-centered resources.
 
-> **Status:** v0.1.0 — landing page only, with **placeholder/dummy content**.
+> **Status:** v0.2.0 — landing page only, with **placeholder/dummy content**.
 > This is the starting point for a project that will expand. The design is a
 > faithful port of `docs/C - Editorial Infographic.html`.
 
@@ -17,7 +35,10 @@ community-centered resources.
 - **[Alpine.js](https://alpinejs.dev) (CSP build)** — `@alpinejs/csp`, so the
   site needs **no `'unsafe-eval'`** in its Content Security Policy.
 - **Self-hosted fonts** — Inter + JetBrains Mono (variable) via `@fontsource`.
-- **[astro-seo](https://github.com/jonasmerlin/astro-seo)** + `@astrojs/sitemap`.
+- **[astro-seo](https://github.com/jonasmerlin/astro-seo)** for meta/OG/Twitter
+  + JSON-LD, and a native **`/sitemap.xml`** route (auto-enumerates pages).
+- **Astro image optimization** (`astro:assets` + `sharp`) — ready for raster
+  imagery via `<Image>` / `<Picture>` (current logo/icons are vector SVG).
 
 ## Prerequisites
 
@@ -54,7 +75,7 @@ icjia-community-engagement/
 ├── astro/
 │   ├── src/
 │   │   ├── components/      # Header, Hero, QuickLinks, News, FocusAreas,
-│   │   │                    #   Events, Subscribe, Footer, ThemeToggle, CivicMark
+│   │   │                    #   Events, Subscribe, Footer, ThemeToggle, IcjiaWordmark
 │   │   ├── data/content.ts  # all dummy content (single source of truth)
 │   │   ├── layouts/BaseLayout.astro
 │   │   ├── pages/index.astro

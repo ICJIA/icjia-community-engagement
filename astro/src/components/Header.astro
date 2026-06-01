@@ -1,16 +1,13 @@
 ---
-import CivicMark from './CivicMark.astro';
+import IcjiaWordmark from './IcjiaWordmark.astro';
 import ThemeToggle from './ThemeToggle.astro';
 import { NAV } from '../data/content';
 ---
 <header class="sticky top-0 z-10 border-b border-line bg-bg/90 backdrop-blur-[8px]">
   <div class="mx-auto grid max-w-[1320px] grid-cols-[1fr_auto] items-center gap-6 px-5 py-[18px] sm:px-8 lg:grid-cols-[1fr_auto_auto] lg:gap-12 lg:px-14">
-    <a href="#" class="inline-flex items-center gap-3 text-inherit no-underline">
-      <CivicMark size={26} />
-      <span class="block">
-        <span class="block text-sm font-semibold tracking-[0.02em]">ICJIA</span>
-        <span class="mt-px block text-xs text-dim">Community Engagement Hub</span>
-      </span>
+    <a href="/" class="inline-flex items-center gap-3 text-inherit no-underline">
+      <IcjiaWordmark class="h-7 w-auto" />
+      <span class="hidden border-l border-line pl-3 text-[11px] leading-[1.3] text-dim sm:block">Community<br />Engagement&nbsp;Hub</span>
     </a>
 
     <nav class="hidden gap-7 lg:flex" aria-label="Primary">

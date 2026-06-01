@@ -6,16 +6,53 @@ import { SITE } from '../data/content';
 interface Props {
   title?: string;
   description?: string;
+  ogImage?: string;
+  ogType?: 'website' | 'article';
+  noindex?: boolean;
 }
 
-const { title = `${SITE.org} · ${SITE.product}`, description = SITE.blurb } = Astro.props;
+const {
+  title = `${SITE.org} · ${SITE.product}`,
+  description = SITE.blurb,
+  ogImage = '/og-image.png',
+  ogType = 'website',
+  noindex = false,
+} = Astro.props;
 
 const SITE_ORIGIN = 'https://icjia-community-engagement.netlify.app';
-// Canonical that matches the URL Netlify actually serves (trailing-slash
-// form; strip any index.html). Keeps SEO identical whether a visitor lands
-// on /path or /path/ — see netlify.toml for the 200-rewrite half of this.
+const origin = Astro.site ?? SITE_ORIGIN;
+// Canonical that matches the URL Netlify serves (trailing-slash form; strip
+// index.html). Keeps SEO identical whether a visitor lands on /path or /path/.
 const rawPath = Astro.url.pathname.replace(/index\.html$/, '');
-const canonical = new URL(rawPath, Astro.site ?? SITE_ORIGIN).toString();
+const canonical = new URL(rawPath, origin).toString();
+const ogImageUrl = new URL(ogImage, origin).toString();
+const imageAlt = `${SITE.org} — ${SITE.product}`;
+
+// Structured data (Organization + WebSite) for rich results.
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'GovernmentOrganization',
+      '@id': `${SITE_ORIGIN}/#org`,
+      name: SITE.orgLong,
+      alternateName: SITE.org,
+      url: SITE_ORIGIN,
+      email: SITE.email.toLowerCase(),
+      logo: new URL('/icon-512.png', origin).toString(),
+      areaServed: { '@type': 'State', name: 'Illinois' },
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_ORIGIN}/#website`,
+      name: `${SITE.org} ${SITE.product}`,
+      url: SITE_ORIGIN,
+      description: SITE.blurb,
+      inLanguage: 'en-US',
+      publisher: { '@id': `${SITE_ORIGIN}/#org` },
+    },
+  ],
+};
 ---
 
 <!doctype html>
@@ -23,7 +60,14 @@ const canonical = new URL(rawPath, Astro.site ?? SITE_ORIGIN).toString();
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Favicon set + manifest -->
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
 
     <!-- No-flash theme: apply the saved preference before first paint. This
          inline script is hashed in the CSP (see scripts/csp-hashes.mjs). -->
@@ -39,13 +83,30 @@ const canonical = new URL(rawPath, Astro.site ?? SITE_ORIGIN).toString();
       title={title}
       description={description}
       canonical={canonical}
+      noindex={noindex}
+      nofollow={noindex}
+      openGraph={{
+        basic: { title, type: ogType, image: ogImageUrl, url: canonical },
+        image: { width: 1200, height: 630, alt: imageAlt, type: 'image/png' },
+        optional: { description, siteName: SITE.product, locale: 'en_US' },
+      }}
+      twitter={{
+        card: 'summary_large_image',
+        title,
+        description,
+        image: ogImageUrl,
+        imageAlt,
+      }}
       extend={{
         meta: [
-          { name: 'theme-color', content: '#0a0f1e' },
-          { name: 'generator', content: 'Astro' },
+          { name: 'author', content: SITE.orgLong },
+          { name: 'theme-color', content: '#06090f' },
+          { name: 'generator', content: Astro.generator },
         ],
       }}
     />
+
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(jsonLd).replace(/</g, '\\u003c')} />
   </head>
   <body>
     <a

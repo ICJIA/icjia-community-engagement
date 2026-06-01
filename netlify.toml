@@ -11,17 +11,18 @@
   PNPM_VERSION = "10.33.4"    # belt-and-suspenders alongside the packageManager pin
 
 # --- Trailing-slash reconciliation -----------------------------------------
-# Astro builds with trailingSlash:'always' (dist/<route>/index.html). A
-# status=200 + force=true rule is a *rewrite*, not a redirect: it serves the
-# slash version for a no-slash request WITHOUT emitting a 301. Result: both
-# /foo and /foo/ return 200 (no 404 either way) and the canonical URL stays
-# consistent. Add one rule per future top-level/dynamic route; this catch-all
-# covers first-level pages.
-[[redirects]]
-  from = "/:slug"
-  to = "/:slug/"
-  status = 200
-  force = true
+# Astro builds with trailingSlash:'always' (dist/<route>/index.html). To make a
+# route's no-slash form return 200 (not a 301), add an EXPLICIT, extensionless
+# rewrite (status=200 + force=true) PER route. A blanket "/:slug" rule is NOT
+# used: with force it also matches and shadows root files (/favicon.ico,
+# /og-image.png, /sitemap.xml, /site.webmanifest, …), 404-ing them. The homepage
+# "/" needs no rule. Add one like this as real routes are introduced:
+#
+#   [[redirects]]
+#     from = "/news"
+#     to = "/news/"
+#     status = 200
+#     force = true
 
 # --- Production / default headers ------------------------------------------
 [[headers]]
