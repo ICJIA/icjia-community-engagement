@@ -3,7 +3,7 @@ import type { APIRoute } from 'astro';
 // Native /sitemap.xml. Static pages under src/pages are auto-enumerated, so the
 // sitemap stays current as routes are added with NO manual step. Only dynamic
 // ([slug]) routes need to be listed by hand in EXTRA_ROUTES below.
-const FALLBACK_ORIGIN = 'https://icjia-community-engagement.netlify.app';
+const FALLBACK_ORIGIN = 'https://community-engagement.netlify.app';
 const EXTRA_ROUTES: string[] = [];
 
 const pageModules = import.meta.glob('./**/*.{astro,md,mdx,html}');

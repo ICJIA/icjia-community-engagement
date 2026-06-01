@@ -5,7 +5,7 @@ import tailwindcss from '@tailwindcss/vite';
 export default defineConfig({
   // Absolute origin (no path). Placeholder Netlify URL for the manager
   // preview — swap for the real domain when one is assigned.
-  site: 'https://icjia-community-engagement.netlify.app',
+  site: 'https://community-engagement.netlify.app',
   output: 'static',
   trailingSlash: 'always',
   build: {

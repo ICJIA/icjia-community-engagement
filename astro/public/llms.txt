@@ -1,0 +1,21 @@
+# ICJIA Community Engagement Hub
+
+> A central space for news, engagement opportunities, public safety updates, grantee conversations, and community-centered resources from the Illinois Criminal Justice Information Authority (ICJIA).
+
+The Community Engagement Hub connects communities, partners, and public safety resources across Illinois. It centers the voices of residents, grantees, service providers, public safety partners, and local leaders to support stronger, safer communities.
+
+> Note: This is an early landing page. The content below is representative/placeholder and will expand over time.
+
+## Sections
+
+- Start here: quick links to upcoming events, ways to get involved, and resources.
+- News & announcements: quarterly summits, grantee roundtables, council updates, and research briefs.
+- Focus areas: community safety & violence prevention; grant access & technical assistance; data, research & public safety trends; partnerships across Illinois communities.
+- Engagement calendar: upcoming ICJIA quarterly summits and grantee roundtables.
+- Subscribe: the quarterly Engagement Brief, by email.
+
+## Contact
+
+- Email: cja.communityengagement@illinois.gov
+- Organization: Illinois Criminal Justice Information Authority (ICJIA)
+- Site: https://community-engagement.netlify.app/

@@ -4,10 +4,12 @@
 
 <h1 align="center">ICJIA Community Engagement Hub</h1>
 
+<p align="center"><strong>Live:</strong> <a href="https://community-engagement.netlify.app/">community-engagement.netlify.app</a></p>
+
 <!-- After the first Netlify deploy, replace SITE_ID below with your site's API ID
      (Netlify → Site configuration → Site details → Site ID). -->
 <p align="center">
-  <a href="https://app.netlify.com/projects/icjia-community-engagement/deploys"><img src="https://api.netlify.com/api/v1/badges/SITE_ID/deploy-status" alt="Netlify Status" /></a>
+  <a href="https://app.netlify.com/projects/community-engagement/deploys"><img src="https://api.netlify.com/api/v1/badges/SITE_ID/deploy-status" alt="Netlify Status" /></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/license-MIT-6366F1.svg" alt="License: MIT" /></a>
   <a href="https://astro.build"><img src="https://img.shields.io/badge/Astro-6.4-BC52EE?logo=astro&logoColor=white" alt="Astro" /></a>
   <a href="https://tailwindcss.com"><img src="https://img.shields.io/badge/Tailwind_CSS-4.3-38BDF8?logo=tailwindcss&logoColor=white" alt="Tailwind CSS" /></a>
@@ -23,7 +25,7 @@ Community Engagement Hub** — a central space for news, engagement
 opportunities, public safety updates, grantee conversations, and
 community-centered resources.
 
-> **Status:** v0.3.0 — landing page only, with **placeholder/dummy content**.
+> **Status:** v0.3.1 — landing page only, with **placeholder/dummy content**.
 > This is the starting point for a project that will expand. The design is a
 > faithful port of `docs/C - Editorial Infographic.html`.
 

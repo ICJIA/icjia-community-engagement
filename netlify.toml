@@ -46,7 +46,7 @@
       script-src 'self' 'sha256-ywnfcPh8MfqpXy9lw37f8o2Gz2CEP027l/k7AZLmWt0='; \
       style-src 'self' 'unsafe-inline'; \
       img-src 'self' data:; \
-      font-src 'self'; \
+      font-src 'self' data:; \
       connect-src 'self'; \
       frame-src 'self'; \
       frame-ancestors 'self'; \
@@ -74,7 +74,7 @@
       script-src 'self' 'sha256-ywnfcPh8MfqpXy9lw37f8o2Gz2CEP027l/k7AZLmWt0='; \
       style-src 'self' 'unsafe-inline'; \
       img-src 'self' data:; \
-      font-src 'self'; \
+      font-src 'self' data:; \
       connect-src 'self'; \
       frame-src 'self' https://app.netlify.com; \
       frame-ancestors 'self' https://app.netlify.com; \

@@ -19,7 +19,7 @@ const {
   noindex = false,
 } = Astro.props;
 
-const SITE_ORIGIN = 'https://icjia-community-engagement.netlify.app';
+const SITE_ORIGIN = 'https://community-engagement.netlify.app';
 const origin = Astro.site ?? SITE_ORIGIN;
 // Canonical that matches the URL Netlify serves (trailing-slash form; strip
 // index.html). Keeps SEO identical whether a visitor lands on /path or /path/.
@@ -27,6 +27,11 @@ const rawPath = Astro.url.pathname.replace(/index\.html$/, '');
 const canonical = new URL(rawPath, origin).toString();
 const ogImageUrl = new URL(ogImage, origin).toString();
 const imageAlt = `${SITE.org} — ${SITE.product}`;
+
+// dateModified reflects the build; datePublished is the launch date. Surfaces
+// content freshness for AI-readiness checks (metapeek) + rich results.
+const datePublished = '2026-06-01T00:00:00-06:00';
+const dateModified = new Date().toISOString();
 
 // Structured data (Organization + WebSite) for rich results.
 const jsonLd = {
@@ -49,6 +54,8 @@ const jsonLd = {
       url: SITE_ORIGIN,
       description: SITE.blurb,
       inLanguage: 'en-US',
+      datePublished,
+      dateModified,
       publisher: { '@id': `${SITE_ORIGIN}/#org` },
     },
   ],

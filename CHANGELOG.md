@@ -5,6 +5,27 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.1] — 2026-06-01
+
+Production fixes (post first deploy) + AI-readiness.
+
+### Fixed
+
+- Set the real site origin `https://community-engagement.netlify.app` (was a
+  placeholder), so `canonical`, `og:image`, and the sitemap resolve — fixes the
+  og:image 404 in link/social previews (this was **not** a CSP issue).
+- Allowed `data:` in CSP `font-src` — Vite inlines a tiny font subset as a
+  `data:` URI, which the strict policy was blocking (the only console error /
+  Best-Practices ding on the live deploy; restores BP 100).
+
+### Added
+
+- `datePublished` / `dateModified` in the WebSite JSON-LD (content freshness).
+- `/llms.txt` describing the site for LLM consumption ([llmstxt.org](https://llmstxt.org)).
+- README: live-site link; Netlify deploys link points to the real project.
+
+[0.3.1]: https://github.com/ICJIA/icjia-community-engagement/releases/tag/v0.3.1
+
 ## [0.3.0] — 2026-06-01
 
 Infographic section chrome.
