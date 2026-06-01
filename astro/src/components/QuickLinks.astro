@@ -1,5 +1,6 @@
 ---
 import { QUICK_LINKS } from '../data/content';
+import SectionHeader from './SectionHeader.astro';
 
 // Column dividers + edge-aligned padding (md+), matching the demo's editorial
 // 3-up grid. Mobile stacks with row dividers.
@@ -7,12 +8,7 @@ const hpad = ['md:pr-7', 'md:px-7', 'md:pl-7'];
 const rdiv = ['md:border-r md:border-line', 'md:border-r md:border-line', ''];
 ---
 <section class="mx-auto max-w-[1320px] border-t border-line px-5 py-14 sm:px-8 lg:px-14 lg:py-18">
-  <div class="mb-10 flex items-end justify-between gap-6">
-    <div>
-      <span class="mb-3 block font-mono text-[11px] tracking-[0.1em] text-accent-fg uppercase">§ A · Start here</span>
-      <h2 class="m-0 max-w-[24ch] text-[40px] leading-[1.05] font-medium tracking-[-0.025em] text-balance">Start here.</h2>
-    </div>
-  </div>
+  <SectionHeader number="01" label="§ A · Start here" heading="Start here." stat={`${QUICK_LINKS.length} quick links`} />
 
   <div class="grid grid-cols-1 border-t border-line md:grid-cols-3">
     {

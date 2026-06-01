@@ -1,4 +1,5 @@
 ---
+import SectionHeader from './SectionHeader.astro';
 // §E — dummy subscribe form. Submission is prevented client-side (Alpine
 // `subscribe` component) so there's no navigation and no backend needed yet.
 ---
@@ -6,17 +7,12 @@
   id="subscribe"
   class="relative isolate mx-auto max-w-[1320px] scroll-mt-24 border-t border-transparent px-5 py-14 before:absolute before:inset-y-0 before:left-1/2 before:-z-10 before:w-screen before:-translate-x-1/2 before:bg-[color-mix(in_oklch,var(--color-accent)_7%,var(--color-surface))] before:content-[''] sm:px-8 lg:px-14 lg:py-18"
 >
+  <SectionHeader number="05" label="§ E · Stay connected" heading="Engagement Brief — quarterly, by email." stat="8,420 subscribers" />
   <div class="grid grid-cols-1 items-start gap-10 md:grid-cols-2 lg:gap-20">
-    <div>
-      <span class="mb-3 block font-mono text-[11px] tracking-[0.1em] text-accent-fg uppercase">§ E · Stay connected</span>
-      <h2 class="m-0 max-w-[24ch] text-[40px] leading-[1.05] font-medium tracking-[-0.025em] text-balance">
-        Engagement Brief — quarterly, by email.
-      </h2>
-      <p class="mt-4 max-w-[50ch] text-[14px] leading-[1.5] text-dim">
-        Announcements, event invitations, surveys, and public safety resource updates.
-        Quarterly digest · used only for ICJIA Community Engagement.
-      </p>
-    </div>
+    <p class="m-0 max-w-[50ch] text-[14px] leading-[1.5] text-dim">
+      Announcements, event invitations, surveys, and public safety resource updates.
+      Quarterly digest · used only for ICJIA Community Engagement.
+    </p>
 
     <form x-data="subscribe" x-on:submit.prevent="submit" class="grid gap-3" novalidate>
       <label for="subscribe-email" class="mono text-dim">Email address</label>

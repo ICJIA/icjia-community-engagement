@@ -1,0 +1,23 @@
+---
+// Editorial "instrument panel" section header: a numbered rule + the § label,
+// a right-aligned stat callout, and the heading. Gives each section visual
+// definition (the infographic-chrome treatment) without any charts.
+interface Props {
+  number: string;
+  label: string;
+  heading: string;
+  stat?: string;
+}
+const { number, label, heading, stat } = Astro.props;
+---
+<header class="mb-8">
+  <div class="flex items-center gap-4">
+    <span class="font-mono text-[12px] font-medium tracking-[0.15em] text-accent-fg">{number}</span>
+    <span aria-hidden="true" class="h-px flex-1 bg-line"></span>
+    {stat && <span class="font-mono text-[11px] tracking-[0.08em] text-dim uppercase">{stat}</span>}
+  </div>
+  <span class="mt-5 block font-mono text-[11px] tracking-[0.1em] text-accent-fg uppercase">{label}</span>
+  <h2 class="m-0 mt-2 max-w-[24ch] text-[40px] leading-[1.05] font-medium tracking-[-0.025em] text-balance">
+    {heading}
+  </h2>
+</header>

@@ -2,17 +2,13 @@
 import { EVENTS } from '../data/content';
 const chipGhost =
   'inline-block rounded-[2px] border border-line px-2 py-1 font-mono text-[10px] uppercase tracking-[0.06em] text-dim';
+import SectionHeader from './SectionHeader.astro';
 ---
 <section
   id="events"
   class="relative isolate mx-auto max-w-[1320px] scroll-mt-24 border-t border-transparent px-5 py-14 before:absolute before:inset-y-0 before:left-1/2 before:-z-10 before:w-screen before:-translate-x-1/2 before:bg-surface before:content-[''] sm:px-8 lg:px-14 lg:py-18"
 >
-  <div class="mb-10 flex items-end justify-between gap-6">
-    <div>
-      <span class="mb-3 block font-mono text-[11px] tracking-[0.1em] text-accent-fg uppercase">§ D · Engagement calendar</span>
-      <h2 class="m-0 max-w-[24ch] text-[40px] leading-[1.05] font-medium tracking-[-0.025em] text-balance">Upcoming opportunities.</h2>
-    </div>
-  </div>
+  <SectionHeader number="04" label="§ D · Engagement calendar" heading="Upcoming opportunities." stat={`${EVENTS.length} upcoming`} />
 
   <ul class="m-0 list-none p-0">
     {

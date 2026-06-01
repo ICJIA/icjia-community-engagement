@@ -1,6 +1,6 @@
 {
   "name": "icjia-community-engagement",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "private": true,
   "type": "module",
   "description": "ICJIA Community Engagement Hub — landing page (Astro + Tailwind + Alpine).",

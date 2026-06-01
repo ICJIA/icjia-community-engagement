@@ -7,14 +7,10 @@ const chip =
 const kicker = 'font-mono text-[11px] uppercase tracking-[0.08em] text-accent-fg';
 const arrowLink =
   'inline-flex items-center gap-2.5 border-b border-line pb-1 text-[15px] text-fg transition-colors group-hover:border-accent group-hover:text-accent-fg';
+import SectionHeader from './SectionHeader.astro';
 ---
 <section class="relative isolate mx-auto max-w-[1320px] border-t border-transparent px-5 py-14 before:absolute before:inset-y-0 before:left-1/2 before:-z-10 before:w-screen before:-translate-x-1/2 before:bg-surface before:content-[''] sm:px-8 lg:px-14 lg:py-18">
-  <div class="mb-10 flex items-end justify-between gap-6">
-    <div>
-      <span class="mb-3 block font-mono text-[11px] tracking-[0.1em] text-accent-fg uppercase">§ B · Latest updates</span>
-      <h2 class="m-0 max-w-[24ch] text-[40px] leading-[1.05] font-medium tracking-[-0.025em] text-balance">News &amp; announcements.</h2>
-    </div>
-  </div>
+  <SectionHeader number="02" label="§ B · Latest updates" heading="News & announcements." stat={`${UPDATES.length} updates`} />
 
   <div x-data="news">
     <!-- Tabs: labels + counts are static (server-rendered); Alpine only

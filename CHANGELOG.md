@@ -5,6 +5,20 @@ All notable changes to this project are documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] — 2026-06-01
+
+Infographic section chrome.
+
+### Added
+
+- Shared `SectionHeader` component giving every section an "instrument panel"
+  header: a numbered rule (01–05), the § label, a right-aligned stat callout
+  derived from live data counts ("5 updates", "4 priorities", "3 upcoming",
+  "8,420 subscribers", …), and the heading. Adds per-section visual definition
+  while keeping the shaded section bands — verified Perf 98 / a11y 100.
+
+[0.3.0]: https://github.com/ICJIA/icjia-community-engagement/releases/tag/v0.3.0
+
 ## [0.2.0] — 2026-06-01
 
 Branding, SEO, and icons.

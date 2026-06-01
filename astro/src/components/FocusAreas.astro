@@ -1,5 +1,6 @@
 ---
 import { PILLARS, FOCUS_LEDE } from '../data/content';
+import SectionHeader from './SectionHeader.astro';
 
 // 2-up grid: odd cells get a right divider + right padding, even cells get
 // left padding; the last row drops its bottom border.
@@ -7,12 +8,7 @@ const cellClass = (i: number) =>
   i % 2 === 0 ? 'md:border-r md:border-line md:pr-12' : 'md:pl-12';
 ---
 <section class="mx-auto max-w-[1320px] border-t border-line px-5 py-14 sm:px-8 lg:px-14 lg:py-18">
-  <div class="mb-10 flex items-end justify-between gap-6">
-    <div>
-      <span class="mb-3 block font-mono text-[11px] tracking-[0.1em] text-accent-fg uppercase">§ C · Focus areas</span>
-      <h2 class="m-0 max-w-[24ch] text-[40px] leading-[1.05] font-medium tracking-[-0.025em] text-balance">What we are focused on.</h2>
-    </div>
-  </div>
+  <SectionHeader number="03" label="§ C · Focus areas" heading="What we are focused on." stat={`${PILLARS.length} priorities`} />
   <p class="-mt-4 mb-10 max-w-[70ch] text-base leading-[1.55] text-dim">{FOCUS_LEDE}</p>
 
   <div class="grid grid-cols-1 border-t border-line md:grid-cols-2">

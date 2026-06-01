@@ -23,7 +23,7 @@ Community Engagement Hub** — a central space for news, engagement
 opportunities, public safety updates, grantee conversations, and
 community-centered resources.
 
-> **Status:** v0.2.0 — landing page only, with **placeholder/dummy content**.
+> **Status:** v0.3.0 — landing page only, with **placeholder/dummy content**.
 > This is the starting point for a project that will expand. The design is a
 > faithful port of `docs/C - Editorial Infographic.html`.
 
@@ -75,7 +75,8 @@ icjia-community-engagement/
 ├── astro/
 │   ├── src/
 │   │   ├── components/      # Header, Hero, QuickLinks, News, FocusAreas,
-│   │   │                    #   Events, Subscribe, Footer, ThemeToggle, IcjiaWordmark
+│   │   │                    #   Events, Subscribe, Footer, ThemeToggle, IcjiaWordmark,
+│   │                    #   SectionHeader
 │   │   ├── data/content.ts  # all dummy content (single source of truth)
 │   │   ├── layouts/BaseLayout.astro
 │   │   ├── pages/index.astro
